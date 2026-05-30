@@ -34,20 +34,28 @@ class ContentGenerator:
     def load_mock_library(self):
         """Loads cached high-quality mock scripts and templates."""
         if os.path.exists(self.mock_json_path):
-            with open(self.mock_json_path, "r") as f:
-                self.mock_library = json.load(f)
-            logger.info(f"Loaded {len(self.mock_library)} mock categories from library.")
+            try:
+                with open(self.mock_json_path, "r", encoding="utf-8") as f:
+                    self.mock_library = json.load(f)
+                logger.info(f"Loaded {len(self.mock_library)} mock categories from library.")
+            except Exception as e:
+                logger.error(f"Error loading mock scripts library: {e}. Swapping to standard defaults.")
+                self.use_default_library()
         else:
             logger.warning(f"Mock scripts library not found at {self.mock_json_path}. Instantiating default in-memory copy.")
-            self.mock_library = {
-                "tech": {
-                    "topic": "Future Tech",
-                    "script": "[HOOK]\n(0-5s): \"Hold on, this changes everything!\"\n\n[STORY]\n(5-25s): \"AI developers are launching automated apps in 2026.\"\n\n[INSIGHTS]\n(25-50s): \"Focus on architecture, design, and testing patterns.\"\n\n[CTA]\n(50-60s): \"What do you think? Comment below and follow!\"",
-                    "linkedin": "Tech is shifting rapidly. Here is why autonomous agents are the future. #Tech #AI #Coding",
-                    "instagram": "AI is changing software development! 🚀 Check out the details in bio. #tech #ai #developer",
-                    "hashtags": ["#tech", "#ai", "#developer"]
-                }
+            self.use_default_library()
+
+    def use_default_library(self):
+        """Defines default in-memory fallback templates."""
+        self.mock_library = {
+            "tech": {
+                "topic": "Future Tech",
+                "script": "[HOOK]\n(0-5s): \"Hold on, this changes everything!\"\n\n[STORY]\n(5-25s): \"AI developers are launching automated apps in 2026.\"\n\n[INSIGHTS]\n(25-50s): \"Focus on architecture, design, and testing patterns.\"\n\n[CTA]\n(50-60s): \"What do you think? Comment below and follow!\"",
+                "linkedin": "Tech is shifting rapidly. Here is why autonomous agents are the future. #Tech #AI #Coding",
+                "instagram": "AI is changing software development! 🚀 Check out the details in bio. #tech #ai #developer",
+                "hashtags": ["#tech", "#ai", "#developer"]
             }
+        }
 
     def generate_script(self, topic: str, category: str) -> str:
         """Generates a high-impact 30-60 second video script using Claude (or mock fallback)."""

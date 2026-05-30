@@ -24,20 +24,28 @@ class BrandMatcher:
     def load_brands(self):
         """Loads brand campaigns and pre-embeds their descriptions."""
         if os.path.exists(self.brands_json_path):
-            with open(self.brands_json_path, "r") as f:
-                self.brands = json.load(f)
-            logger.info(f"Loaded {len(self.brands)} brand profiles for semantic matching.")
-            
-            # Embed all brand descriptions
-            descriptions = [b["description"] for b in self.brands]
-            self.brand_embeddings = self.embedder.encode(descriptions)
+            try:
+                with open(self.brands_json_path, "r", encoding="utf-8") as f:
+                    self.brands = json.load(f)
+                logger.info(f"Loaded {len(self.brands)} brand profiles for semantic matching.")
+                
+                # Embed all brand descriptions
+                descriptions = [b["description"] for b in self.brands]
+                self.brand_embeddings = self.embedder.encode(descriptions)
+            except Exception as e:
+                logger.error(f"Error loading brands from JSON: {e}")
+                self.use_default_brands()
         else:
             logger.warning(f"Brands database not found at {self.brands_json_path}. Mocking brand templates.")
-            self.brands = [
-                {"id": 1, "name": "FitCorp", "description": "High performance sportswear and daily workout training gear."},
-                {"id": 2, "name": "TechStart", "description": "AI-powered developer productivity automation and code testing SaaS."}
-            ]
-            self.brand_embeddings = self.embedder.encode([b["description"] for b in self.brands])
+            self.use_default_brands()
+
+    def use_default_brands(self):
+        """Defines default mock brand list and pre-embeds them."""
+        self.brands = [
+            {"id": 1, "name": "FitCorp", "description": "High performance sportswear and daily workout training gear."},
+            {"id": 2, "name": "TechStart", "description": "AI-powered developer productivity automation and code testing SaaS."}
+        ]
+        self.brand_embeddings = self.embedder.encode([b["description"] for b in self.brands])
 
     def get_top_brands_for_creator(self, creator_bio: str, top_n: int = 5) -> List[Dict[str, Any]]:
         """Finds the top N brands that match a creator's bio description."""
