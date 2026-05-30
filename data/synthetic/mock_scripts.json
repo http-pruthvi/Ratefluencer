@@ -1,0 +1,28 @@
+{
+    "tech": {
+        "topic": "AI agents are taking over coding in 2026",
+        "script": "[HOOK]\n(0-5s): Pointing at screen with shocked face. \"Stop writing code by hand! In 2026, AI agents are officially writing 80% of production-ready software!\"\n\n[STORY]\n(5-25s): Cut to sitting at desk typing rapidly. \"Here is what's crazy. Two years ago, we used AI for code autocompletes. Today, companies are deploying autonomous coding frameworks that plan, build, test, and containerize complete apps from a single terminal prompt!\"\n\n[INSIGHTS]\n(25-50s): Graphic of Developer vs Agent workflow. \"This doesn't mean developer jobs are dead. It means you need to shift from a code writer to a system architect. Focus on prompt design, testing frameworks, and multi-agent system orchestration!\"\n\n[CTA]\n(50-60s): Smile and point down. \"Are you building with agents yet? Let me know in the comments and hit follow for daily tech deep dives!\"",
+        "linkedin": "The software engineering landscape in 2026 is undergoing a paradigm shift. We are moving from 'AI-assisted coding' to 'autonomous software agents'.\n\nRecent data shows that over 80% of standard repository scaffolding and test generation is now entirely orchestrated by multi-agent developer flows. As systems architects, our role is transitioning from writing syntax to designing workflows, reviewing agent outputs, and ensuring safety boundaries.\n\nAre you integrating AI agents into your development stack? Let's discuss in the comments!\n\n#SoftwareEngineering #AIAgents #FutureOfWork #DevOps #Coding",
+        "instagram": "AI agents are changing coding forever in 2026! \ud83d\ude80 Stop writing basic boilerplate code and start designing systems. The developers who thrive tomorrow are the ones who orchestrate agents today. \n\nCheck out the full breakdown in my bio! \ud83d\udd17\n\n#ai #coding #programmer #tech #softwaredeveloper #webdev #starthere #computerscience #softwareengineer #trends",
+        "hashtags": [
+            "#ai",
+            "#coding",
+            "#programmer",
+            "#tech",
+            "#softwaredeveloper"
+        ]
+    },
+    "fitness": {
+        "topic": "Zone 2 Cardio is the ultimate fat burning hack",
+        "script": "[HOOK]\n(0-5s): Running on a treadmill comfortably. \"You are running too fast! If you want to burn fat, stop sprinting and start moving at a conversational pace. Here is why.\"\n\n[STORY]\n(5-25s): Diagram showing energy pathways. \"When you train in Zone 2 cardio, your body relies almost entirely on fat oxidation rather than carbohydrates. This means your cells are optimized to burn fat stores for fuel directly.\"\n\n[INSIGHTS]\n(25-50s): Show smartwatch screen. \"Keep your heart rate at 60-70% of your max. You should be able to hold a full conversation without gasping. 150 minutes a week of this is the ultimate longevity and body recomposition hack!\"\n\n[CTA]\n(50-60s): Stepping off. \"Save this video for your next gym session and follow for science-backed fitness tips!\"",
+        "linkedin": "Optimal physical health is the foundation of peak professional performance. One of the most under-utilized fitness strategies in high-stress corporate environments is Zone 2 training.\n\nZone 2 cardio (conversational pace) improves mitochondrial density, lowers resting heart rate, and significantly increases metabolic flexibility. By prioritizing low-intensity steady-state (LISS) exercise, we build the endurance necessary to handle high cognitive loads without burning out.\n\nWhat is your preferred recovery training method? \n\n#FitnessScience #ExecutiveHealth #Zone2Cardio #CorporateWellness #Biohacking",
+        "instagram": "You're running too fast! \ud83d\uded1 Burn fat and boost longevity with Zone 2 cardio. Conversational pace, maximum fat oxidation, and zero burnout. \n\nSave this for your next gym day! \ud83d\udcaa\n\n#fitness #zone2 #cardio #gymmotivation #healthylifestyle #fatloss #workouttips #fitfam #sciencebasedfitness",
+        "hashtags": [
+            "#fitness",
+            "#zone2",
+            "#cardio",
+            "#gymmotivation",
+            "#healthylifestyle"
+        ]
+    }
+}

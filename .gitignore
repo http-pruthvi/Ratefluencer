@@ -1,0 +1,21 @@
+# Python caches
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.stfolder/
+
+# Local databases
+ratefluencer.db
+ratefluencer.db-journal
+
+# Environment config containing keys
+.env
+
+# Streamlit config
+.streamlit/
+
+# OS-specific
+.DS_Store
+Thumbs.db

@@ -1,0 +1,51 @@
+[
+    {
+        "id": 1,
+        "name": "FitTrack Pro",
+        "industry": "fitness",
+        "aesthetic": "High energy, athletic, clean, scientific",
+        "description": "Premium wearable brand focusing on fitness trackers, heart rate monitors, and metabolic state coaching. Target audience is active athletes, gym-goers, and bio-hackers."
+    },
+    {
+        "id": 2,
+        "name": "DevFlow AI",
+        "industry": "tech",
+        "aesthetic": "Futuristic, sleek, dark-mode, developer-oriented",
+        "description": "AI-powered developer productivity tool that autocomplete code, formats PRs, and creates instant integration plans. Target audience is software engineers, tech startup founders, and students."
+    },
+    {
+        "id": 3,
+        "name": "SustainaThread",
+        "industry": "fashion",
+        "aesthetic": "Earth tones, minimalist, organic, cozy",
+        "description": "Eco-friendly capsule wardrobe clothing line utilizing organic hemp, linen, and recycled plastics. Target audience is conscious shoppers, vintage enthusiasts, and minimalists."
+    },
+    {
+        "id": 4,
+        "name": "FinSimple",
+        "industry": "finance",
+        "aesthetic": "Modern, trustworthy, vibrant, educational",
+        "description": "Zero-fee investing and savings app with micro-investing and automated round-ups. Target audience is Gen Z and millennials starting their personal finance journey."
+    },
+    {
+        "id": 5,
+        "name": "SpiceRoute MealPrep",
+        "industry": "food",
+        "aesthetic": "Colorful, high contrast, family-friendly, tasty",
+        "description": "Fast and gourmet meal-prep delivery box providing organic ingredients and global recipes in under 30 minutes. Target audience is busy professionals, healthy eaters, and home chefs."
+    },
+    {
+        "id": 6,
+        "name": "ApexGamer",
+        "industry": "gaming",
+        "aesthetic": "RGB, neon, high contrast, competitive",
+        "description": "Pro-grade gaming mechanical keyboards, customizable mice, and ergonomic gaming chairs. Target audience is streamers, esports competitive players, and heavy PC gamers."
+    },
+    {
+        "id": 7,
+        "name": "RoamFree Gear",
+        "industry": "travel",
+        "aesthetic": "Rugged, raw, beautiful wilderness, cinematic",
+        "description": "Ultra lightweight, modular travel backpacks and weather-proof outdoor gear. Target audience is digital nomads, hikers, backpackers, and travel vloggers."
+    }
+]
