@@ -144,3 +144,15 @@ def apply_premium_style():
         
         </style>
     """, unsafe_allow_html=True)
+    
+    # Global Glassmorphic Top Navigation Bar
+    st.markdown("""
+        <div style="background: rgba(14, 22, 38, 0.4); border: 1px solid rgba(255, 255, 255, 0.05); padding: 15px 30px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; backdrop-filter: blur(8px);">
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <span style="font-size: 1.6rem; font-weight: 800; font-family: 'Outfit', sans-serif; background: linear-gradient(135deg, #a5b4fc 0%, #6366f1 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">⚡ Ratefluencer AI</span>
+            </div>
+            <div style="font-size: 0.95rem; color: #94a3b8; font-weight: 600; font-family: 'Inter', sans-serif; letter-spacing: 0.03em;">
+                Predict Influence. Create Virality.
+            </div>
+        </div>
+    """, unsafe_allow_html=True)

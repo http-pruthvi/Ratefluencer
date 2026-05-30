@@ -143,50 +143,36 @@ if "agent_result" in st.session_state:
             
         st.write("")
         
-        # Social Copy tabs
+        # Social Copy side-by-side columns (as requested: "Show LinkedIn post and Instagram caption side by side")
         st.markdown("### 📲 Multi-Channel Publishing")
-        tab_li, tab_ig = st.tabs(["💼 LinkedIn Post", "📸 Instagram Caption"])
+        col_social_li, col_social_ig = st.columns(2)
         
-        with tab_li:
-            st.text_area("LinkedIn Professional Copy", res.get("linkedin_post", ""), height=220)
+        with col_social_li:
+            st.markdown("##### 💼 LinkedIn Professional Post")
+            st.text_area("LinkedIn Copy", res.get("linkedin_post", ""), height=250, label_visibility="collapsed")
             
-        with tab_ig:
-            st.text_area("Instagram Caption Copy", res.get("instagram_caption", ""), height=220)
-            st.write(f"**Hashtags suggested:** `{' '.join(res.get('hashtags', []))}`")
+        with col_social_ig:
+            st.markdown("##### 📸 Instagram Aesthetic Caption")
+            st.text_area("Instagram Copy", res.get("instagram_caption", ""), height=200, label_visibility="collapsed")
+            st.markdown(f"<p style='color:#a5b4fc; font-size:0.82rem; font-weight:600; margin-top:5px; line-height:1.4;'>Tags: {' '.join(res.get('hashtags', []))}</p>", unsafe_allow_html=True)
             
     with col_right:
         st.markdown("### 🔮 Virality Forecasting")
         
         # Dial indicator
         vir_score = res.get("virality_score", 0.0)
-        fig_vir = render_gauge_chart(vir_score, "Virality Rating", "#f43f5e")
+        fig_vir = render_gauge_chart(vir_score, "Virality Score", "#f43f5e")
         st.plotly_chart(fig_vir, use_container_width=True)
         
-        # Forecasted statistics blocks
-        col_views, col_likes, col_shares = st.columns(3)
-        with col_views:
-            st.markdown(f"""
-                <div class='glass-card' style='text-align: center; padding: 12px;'>
-                    <p class='metric-label' style='font-size:0.75rem;'>Est Views</p>
-                    <p class='metric-value' style='font-size:1.35rem; color:#ffffff;'>{res.get('expected_views', 0):,}</p>
-                </div>
-            """, unsafe_allow_html=True)
-            
-        with col_likes:
-            st.markdown(f"""
-                <div class='glass-card' style='text-align: center; padding: 12px;'>
-                    <p class='metric-label' style='font-size:0.75rem;'>Est Likes</p>
-                    <p class='metric-value' style='font-size:1.35rem; color:#ffffff;'>{res.get('expected_likes', 0):,}</p>
-                </div>
-            """, unsafe_allow_html=True)
-            
-        with col_shares:
-            st.markdown(f"""
-                <div class='glass-card' style='text-align: center; padding: 12px;'>
-                    <p class='metric-label' style='font-size:0.75rem;'>Est Shares</p>
-                    <p class='metric-value' style='font-size:1.35rem; color:#ffffff;'>{res.get('expected_shares', 0):,}</p>
-                </div>
-            """, unsafe_allow_html=True)
+        # Metric Cards (as requested: "predicted views/likes/shares as metric cards")
+        st.markdown("##### 📊 Predicted Performance Metrics")
+        col_metric1, col_metric2, col_metric3 = st.columns(3)
+        with col_metric1:
+            st.metric("Expected Views", f"{res.get('expected_views', 0):,}")
+        with col_metric2:
+            st.metric("Expected Likes", f"{res.get('expected_likes', 0):,}")
+        with col_metric3:
+            st.metric("Expected Shares", f"{res.get('expected_shares', 0):,}")
             
         st.write("")
         

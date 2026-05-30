@@ -15,9 +15,9 @@ def render_gauge_chart(score: float, title: str, color_hex: str = "#6366f1") -> 
             'borderwidth': 1,
             'bordercolor': 'rgba(255, 255, 255, 0.08)',
             'steps': [
-                {'range': [0, 30], 'color': 'rgba(239, 68, 68, 0.05)'},
-                {'range': [30, 70], 'color': 'rgba(245, 158, 11, 0.05)'},
-                {'range': [70, 100], 'color': 'rgba(16, 185, 129, 0.05)'}
+                {'range': [0, 40], 'color': 'rgba(239, 68, 68, 0.08)'},  # Red 0-40
+                {'range': [40, 70], 'color': 'rgba(245, 158, 11, 0.08)'}, # Yellow 40-70
+                {'range': [70, 100], 'color': 'rgba(16, 185, 129, 0.08)'} # Green 70-100
             ],
             'threshold': {
                 'line': {'color': color_hex, 'width': 3},

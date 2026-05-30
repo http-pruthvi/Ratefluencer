@@ -37,9 +37,22 @@ if username or search_triggered:
                     data = res_json["data"]
                     profile = data["profile"]
                     
+                    # --- Fetch Brand Matches First for the 4th Gauge ---
+                    brand_match_score = 80.0
+                    brands = []
+                    try:
+                        brand_api_url = f"http://127.0.0.1:8000/api/influencer/{profile['id']}/brand-matches"
+                        brand_res = requests.get(brand_api_url, timeout=5)
+                        if brand_res.status_code == 200 and brand_res.json().get("success"):
+                            brands = brand_res.json()["data"]
+                            if brands:
+                                brand_match_score = brands[0]["match_score"]
+                    except Exception as e:
+                        pass
+
                     # --- Main Score Dials Section ---
                     st.markdown("### 📊 Performance Scoring")
-                    col_gauge1, col_gauge2, col_gauge3 = st.columns(3)
+                    col_gauge1, col_gauge2, col_gauge3, col_gauge4 = st.columns(4)
                     
                     with col_gauge1:
                         fig1 = render_gauge_chart(data["authenticity_score"], "Authenticity Score", "#ef4444")
@@ -52,8 +65,13 @@ if username or search_triggered:
                         st.markdown("<p style='text-align:center; color:#94a3b8; font-size:0.85rem; margin-top:-20px;'>Prophet 30-day time-series growth</p>", unsafe_allow_html=True)
                         
                     with col_gauge3:
-                        fig3 = render_gauge_chart(data["ratefluencer_score"], "Ratefluencer Score™", "#10b981")
+                        fig3 = render_gauge_chart(brand_match_score, "Brand Match Score", "#818cf8")
                         st.plotly_chart(fig3, use_container_width=True)
+                        st.markdown("<p style='text-align:center; color:#94a3b8; font-size:0.85rem; margin-top:-20px;'>SBERT vector semantic brief index</p>", unsafe_allow_html=True)
+                        
+                    with col_gauge4:
+                        fig4 = render_gauge_chart(data["ratefluencer_score"], "Ratefluencer Score™", "#10b981")
+                        st.plotly_chart(fig4, use_container_width=True)
                         st.markdown("<p style='text-align:center; color:#94a3b8; font-size:0.85rem; margin-top:-20px;'>XGBoost Campaign Success probability</p>", unsafe_allow_html=True)
                     
                     st.write("")
@@ -124,14 +142,8 @@ if username or search_triggered:
                     st.markdown("### 🤝 Semantic Brand Matches")
                     st.markdown("<p style='color:#94a3b8; font-size:0.95rem; margin-bottom:15px;'>Top product campaigns semantically aligned to this creator's bio using SBERT vector cosine similarity search.</p>", unsafe_allow_html=True)
                     
-                    # Call Brand Matches Endpoint
-                    brand_api_url = f"http://127.0.0.1:8000/api/influencer/{profile['id']}/brand-matches"
-                    brand_res = requests.get(brand_api_url, timeout=5)
-                    
-                    if brand_res.status_code == 200 and brand_res.json().get("success"):
-                        brands = brand_res.json()["data"]
+                    if brands:
                         cols_brands = st.columns(len(brands))
-                        
                         for idx, brand in enumerate(brands):
                             with cols_brands[idx]:
                                 st.markdown(f"""
