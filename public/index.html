@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ratefluencer AI — Predict Influence. Create Virality.</title>
+    <meta name="description" content="AI-powered Influencer Intelligence & Autonomous Viral Content Creation Platform. Audit creators, match brands, discover trends, and generate viral campaigns.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <nav class="topnav" id="topnav">
+        <div class="topnav-brand">
+            <span class="topnav-logo">⚡</span>
+            <span class="topnav-title">Ratefluencer AI</span>
+        </div>
+        <div class="topnav-links">
+            <a href="#" class="nav-link active" data-page="home" id="nav-home">Home</a>
+            <a href="#" class="nav-link" data-page="scorer" id="nav-scorer">Profile Scorer</a>
+            <a href="#" class="nav-link" data-page="matcher" id="nav-matcher">Brand Matcher</a>
+            <a href="#" class="nav-link" data-page="trends" id="nav-trends">Trend Discovery</a>
+            <a href="#" class="nav-link" data-page="studio" id="nav-studio">Content Studio</a>
+        </div>
+        <div class="topnav-tagline">Predict Influence. Create Virality.</div>
+    </nav>
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- PAGE: HOME -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <section class="page active" id="page-home">
+        <div class="hero-section">
+            <div class="hero-icon">⚡</div>
+            <h1 class="hero-title"><span class="gradient-text">Ratefluencer AI</span></h1>
+            <p class="hero-subtitle">The unified AI-powered Influencer Intelligence & Autonomous Viral Content Creation Platform built for Hackathon 2026.</p>
+        </div>
+
+        <div class="stats-grid">
+            <div class="glass-card stat-card" style="border-left: 4px solid var(--rose);">
+                <p class="metric-label">The Marketing Problem</p>
+                <p class="metric-value" style="color: var(--rose);">$15 Billion</p>
+                <p class="metric-desc">Wasted annually on inflated vanity metrics, bot followings, and misaligned brand partnerships.</p>
+            </div>
+            <div class="glass-card stat-card" style="border-left: 4px solid var(--emerald);">
+                <p class="metric-label">Ratefluencer ROI</p>
+                <p class="metric-value" style="color: var(--emerald);">+30% ROI</p>
+                <p class="metric-desc">Brands experience enhanced campaign conversions utilizing our 9-feature XGBoost Campaign Success predictor.</p>
+            </div>
+            <div class="glass-card stat-card" style="border-left: 4px solid var(--indigo);">
+                <p class="metric-label">Creator Performance</p>
+                <p class="metric-value" style="color: var(--indigo);">2x Faster</p>
+                <p class="metric-desc">Follower growth driven by our autonomous LangGraph trend scraper, Claude script builder, and virality assessor.</p>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="tracks-grid">
+            <div class="glass-card track-card">
+                <h3>🛡️ Track 1: Influencer Intelligence</h3>
+                <p class="track-desc">De-risk your advertising spend using four specialized layers of AI analysis.</p>
+                <ul class="track-list">
+                    <li><b>Authenticity Score:</b> Detects bot networks using Isolation Forest engagement anomalies.</li>
+                    <li><b>Growth Score:</b> Projects 30-day follower trajectory using Prophet time-series models.</li>
+                    <li><b>Brand Match Score:</b> Matches brand criteria using SBERT + FAISS vector indexes.</li>
+                    <li><b>Ratefluencer Score™:</b> Outputs 0-100 success rates using 9-feature XGBoost.</li>
+                </ul>
+                <button class="btn-primary" onclick="navigateTo('scorer')">Launch Profile Scorer</button>
+            </div>
+            <div class="glass-card track-card">
+                <h3>🎬 Track 2: Autonomous Viral Agent</h3>
+                <p class="track-desc">Automate your entire content operation through our multi-agent LangGraph workflow.</p>
+                <ul class="track-list">
+                    <li><b>Trend Discovery:</b> Scrapes live technical articles from Reddit, YouTube and RSS.</li>
+                    <li><b>Content Generation:</b> Generates high-impact 30-60s video scripts using Claude API.</li>
+                    <li><b>Social Publisher:</b> Composes professional LinkedIn posts and Instagram captions.</li>
+                    <li><b>Virality Estimator:</b> Forecasts views, likes, and shares using a Random Forest regressor.</li>
+                </ul>
+                <button class="btn-primary" onclick="navigateTo('trends')">Launch Content Studio</button>
+            </div>
+        </div>
+
+        <div class="footer-stack">
+            Ratefluencer Architecture Stack: FastAPI • scikit-learn • XGBoost • Prophet • SentenceTransformers • LangGraph • Claude 3.5 Sonnet
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- PAGE: INFLUENCER SCORER -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <section class="page" id="page-scorer">
+        <h2 class="page-title">🔍 <span class="gradient-text">Creator Profile Analyzer</span></h2>
+        <p class="page-desc">Enter an Instagram username to execute our multi-layer ML audit: Isolation Forest bot checks, SBERT brand indexing, and Prophet forecasting.</p>
+
+        <div class="search-bar">
+            <input type="text" id="scorer-input" class="input-field" value="@tech_creator_45" placeholder="e.g. @fitness_model, @tech_guru">
+            <button class="btn-primary" id="scorer-btn" onclick="runInfluencerAudit()">Run Audit</button>
+        </div>
+
+        <div id="scorer-loading" class="loading-state" style="display:none;">
+            <div class="spinner"></div>
+            <p>Analyzing profile statistics & running forecasting models...</p>
+        </div>
+
+        <div id="scorer-results" style="display:none;">
+            <!-- Gauge Charts Row -->
+            <h3 class="section-heading">📊 Performance Scoring</h3>
+            <div class="gauge-grid">
+                <div class="gauge-cell">
+                    <canvas id="gauge-auth" width="200" height="140"></canvas>
+                    <p class="gauge-label">Authenticity Score</p>
+                    <p class="gauge-sublabel">Isolation Forest bot risk detector</p>
+                </div>
+                <div class="gauge-cell">
+                    <canvas id="gauge-growth" width="200" height="140"></canvas>
+                    <p class="gauge-label">Growth Forecast</p>
+                    <p class="gauge-sublabel">Prophet 30-day time-series growth</p>
+                </div>
+                <div class="gauge-cell">
+                    <canvas id="gauge-brand" width="200" height="140"></canvas>
+                    <p class="gauge-label">Brand Match Score</p>
+                    <p class="gauge-sublabel">SBERT vector semantic brief index</p>
+                </div>
+                <div class="gauge-cell">
+                    <canvas id="gauge-rate" width="200" height="140"></canvas>
+                    <p class="gauge-label">Ratefluencer Score™</p>
+                    <p class="gauge-sublabel">XGBoost Campaign Success probability</p>
+                </div>
+            </div>
+
+            <!-- Profile + Timeline -->
+            <div class="detail-grid">
+                <div class="detail-left">
+                    <h3 class="section-heading">📝 Profile Audit</h3>
+                    <div class="glass-card" id="profile-card"></div>
+                    <div class="glass-card" id="metrics-table"></div>
+                </div>
+                <div class="detail-right">
+                    <h3 class="section-heading">📈 Follower Trajectory Forecast</h3>
+                    <div class="glass-card chart-container">
+                        <canvas id="growth-chart"></canvas>
+                    </div>
+                    <p class="growth-rate-text" id="growth-rate-text"></p>
+                </div>
+            </div>
+
+            <!-- Brand Matches -->
+            <div class="divider"></div>
+            <h3 class="section-heading">🤝 Semantic Brand Matches</h3>
+            <p class="page-desc" style="margin-top:-10px;">Top product campaigns semantically aligned to this creator's bio using SBERT vector cosine similarity search.</p>
+            <div class="brands-grid" id="brands-grid"></div>
+        </div>
+
+        <div id="scorer-error" class="error-state" style="display:none;"></div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- PAGE: BRAND MATCHER -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <section class="page" id="page-matcher">
+        <h2 class="page-title">🤝 <span class="gradient-text">Vector Campaign Matcher</span></h2>
+        <p class="page-desc">Paste your campaign brief below. Our SBERT dense vector engine will semantically query our database of influencers to find the absolute best fits.</p>
+
+        <textarea id="matcher-input" class="textarea-field" rows="4" placeholder="Describe your ideal creator...">We are seeking a developer or tech builder who makes daily tutorials about AI agents, cloud computing, and coding hacks. They should have a clean, minimalist workspace aesthetic and speak to software engineers.</textarea>
+
+        <button class="btn-primary" id="matcher-btn" onclick="searchCreators()" style="margin-top:16px;">Search Creators</button>
+
+        <div id="matcher-loading" class="loading-state" style="display:none;">
+            <div class="spinner"></div>
+            <p>Embedding campaign brief and running FAISS vector search...</p>
+        </div>
+
+        <div id="matcher-results" style="display:none;">
+            <h3 class="section-heading">🎯 Ideal Creator Partnerships Discovered</h3>
+            <div id="matcher-list"></div>
+        </div>
+
+        <div id="matcher-error" class="error-state" style="display:none;"></div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- PAGE: TREND DISCOVERY -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <section class="page" id="page-trends">
+        <h2 class="page-title">🔥 <span class="gradient-text">Live Trend Discovery</span></h2>
+        <p class="page-desc">Real-time hot-spots consolidated across subreddits, YouTube technology feeds, and RSS. Ranked dynamically by volume, velocity, and novelty.</p>
+
+        <button class="btn-primary" id="trends-btn" onclick="loadTrends()">Refresh Feeds</button>
+
+        <div id="trends-loading" class="loading-state" style="display:none;">
+            <div class="spinner"></div>
+            <p>Harvesting live API feeds and executing trend scoring algorithms...</p>
+        </div>
+
+        <div id="trends-results" style="display:none;">
+            <h3 class="section-heading">🏆 Top Ranked Tech Trends</h3>
+            <div class="trends-table-header">
+                <span class="th-rank">Rank</span>
+                <span class="th-source">Source</span>
+                <span class="th-topic">Trending Topic</span>
+                <span class="th-score">Trend Score</span>
+                <span class="th-action">Action</span>
+            </div>
+            <div id="trends-list"></div>
+        </div>
+
+        <div id="trends-error" class="error-state" style="display:none;"></div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- PAGE: CONTENT STUDIO -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <section class="page" id="page-studio">
+        <h2 class="page-title">🎬 <span class="gradient-text">AI Campaign Content Studio</span></h2>
+        <p class="page-desc">Trigger our autonomous LangGraph agent to generate viral video scripts, cross-platform captions, and predict campaign virality.</p>
+
+        <div class="studio-inputs">
+            <div class="studio-topic">
+                <label class="input-label">Topic / Headline</label>
+                <input type="text" id="studio-topic" class="input-field" value="AI agents are taking over coding in 2026" placeholder="e.g. AI coding benchmarks, Zone 2 Cardio secrets">
+            </div>
+            <div class="studio-category">
+                <label class="input-label">Niche Category</label>
+                <select id="studio-category" class="input-field">
+                    <option value="tech" selected>tech</option>
+                    <option value="finance">finance</option>
+                    <option value="fitness">fitness</option>
+                    <option value="fashion">fashion</option>
+                    <option value="food">food</option>
+                    <option value="travel">travel</option>
+                    <option value="gaming">gaming</option>
+                </select>
+            </div>
+        </div>
+        <button class="btn-primary" id="studio-btn" onclick="runAgentPipeline()">Generate Campaign</button>
+
+        <div id="studio-loading" class="loading-state" style="display:none;">
+            <div class="spinner"></div>
+            <p>Invoking LangGraph Agent workflow (Discovery → Claude Script → Publisher → Virality Engine)...</p>
+        </div>
+
+        <div id="studio-results" style="display:none;">
+            <div class="divider"></div>
+            <div class="studio-grid">
+                <div class="studio-left">
+                    <h3 class="section-heading">🎬 Generated Video Reel Script</h3>
+                    <p class="page-desc" style="margin-top:-5px;">Vertical video outline parsed by script supervisor.</p>
+                    <div id="script-bands"></div>
+
+                    <h3 class="section-heading" style="margin-top:30px;">📲 Multi-Channel Publishing</h3>
+                    <div class="social-grid">
+                        <div class="glass-card social-card">
+                            <h4>💼 LinkedIn Professional Post</h4>
+                            <p class="social-text" id="linkedin-text"></p>
+                        </div>
+                        <div class="glass-card social-card">
+                            <h4>📸 Instagram Aesthetic Caption</h4>
+                            <p class="social-text" id="instagram-text"></p>
+                            <p class="hashtags-text" id="hashtags-text"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="studio-right">
+                    <h3 class="section-heading">🔮 Virality Forecasting</h3>
+                    <div class="gauge-cell" style="max-width:300px;margin:0 auto;">
+                        <canvas id="gauge-virality" width="260" height="160"></canvas>
+                        <p class="gauge-label">Virality Score</p>
+                    </div>
+
+                    <h4 class="section-heading" style="margin-top:24px;">📊 Predicted Performance</h4>
+                    <div class="perf-metrics">
+                        <div class="perf-card">
+                            <span class="perf-label">Expected Views</span>
+                            <span class="perf-value" id="perf-views">—</span>
+                        </div>
+                        <div class="perf-card">
+                            <span class="perf-label">Expected Likes</span>
+                            <span class="perf-value" id="perf-likes">—</span>
+                        </div>
+                        <div class="perf-card">
+                            <span class="perf-label">Expected Shares</span>
+                            <span class="perf-value" id="perf-shares">—</span>
+                        </div>
+                    </div>
+
+                    <h4 class="section-heading" style="margin-top:24px;">📝 Script Structure Critiques</h4>
+                    <div id="insights-list"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="studio-error" class="error-state" style="display:none;"></div>
+    </section>
+
+    <script src="/app.js"></script>
+</body>
+</html>
