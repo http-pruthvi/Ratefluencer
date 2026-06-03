@@ -14,17 +14,36 @@ logger = logging.getLogger("ratefluencer.database")
 
 DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./ratefluencer.db")
 
-# Dynamic database fallback logic
+# Dynamic database fallback logic for read-only filesystems (e.g. Vercel)
+if DATABASE_URL.startswith("sqlite:///"):
+    db_filename = DATABASE_URL.replace("sqlite:///", "")
+    # Check if we are running in Vercel or in a read-only directory
+    if os.getenv("VERCEL") == "1" or not os.access(".", os.W_OK):
+        import shutil
+        tmp_db_path = "/tmp/ratefluencer.db"
+        if not os.path.exists(tmp_db_path):
+            src_path = os.path.abspath(db_filename)
+            if os.path.exists(src_path):
+                try:
+                    shutil.copy2(src_path, tmp_db_path)
+                    logger.info(f"Copied read-only database from {src_path} to writable path {tmp_db_path}")
+                except Exception as e:
+                    logger.error(f"Failed to copy database to /tmp: {e}")
+            else:
+                logger.warning(f"Source database not found at {src_path} to copy to /tmp")
+        DATABASE_URL = f"sqlite:///{tmp_db_path}"
+
 try:
-    engine = create_engine(DATABASE_URL)
+    engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False} if "sqlite" in DATABASE_URL else {})
     # Check connection
     with engine.connect() as conn:
         pass
     logger.info(f"Successfully connected to database using: {DATABASE_URL}")
 except Exception as e:
     logger.warning(f"Failed to connect to primary DB {DATABASE_URL}: {e}. Falling back to SQLite local db.")
-    DATABASE_URL = "sqlite:///./ratefluencer.db"
-    engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False} if "sqlite" in DATABASE_URL else {})
+    # Local fallback to temp database if everything else fails
+    DATABASE_URL = "sqlite:////tmp/ratefluencer_fallback.db"
+    engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()

@@ -11,8 +11,28 @@
   ],
   "routes": [
     {
-      "src": "/(.*)",
+      "src": "/styles.css",
+      "dest": "public/styles.css"
+    },
+    {
+      "src": "/app.js",
+      "dest": "public/app.js"
+    },
+    {
+      "src": "/api/(.*)",
       "dest": "api/main.py"
+    },
+    {
+      "src": "/docs",
+      "dest": "api/main.py"
+    },
+    {
+      "src": "/openapi.json",
+      "dest": "api/main.py"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "public/index.html"
     }
   ],
   "env": {

@@ -68,9 +68,12 @@ def root_handler(request: Request):
         }
     }
 
-# Mount static files (HTML, CSS, JS) so they are served directly from the root
-static_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "public"))
-app.mount("/", StaticFiles(directory=static_dir, html=True), name="public")
+# Mount static files (HTML, CSS, JS) so they are served directly from the root in local dev.
+# Skip this on Vercel to avoid "directory not found" lambda startup errors (handled by vercel.json routes instead).
+if os.getenv("VERCEL") != "1":
+    static_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "public"))
+    if os.path.exists(static_dir):
+        app.mount("/", StaticFiles(directory=static_dir, html=True), name="public")
 
 if __name__ == "__main__":
     import uvicorn
