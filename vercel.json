@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/main.py",
+      "use": "@vercel/python",
+      "config": {
+        "maxLambdaSize": "50mb"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "api/main.py"
+    }
+  ],
+  "env": {
+    "DATABASE_URL": "sqlite:///./ratefluencer.db",
+    "FORCE_TFIDF_FALLBACK": "true"
+  }
+}

@@ -95,9 +95,13 @@ class AuthenticityDetector:
     def load(self):
         """Loads the pre-trained Isolation Forest model."""
         if os.path.exists(self.model_path):
-            with open(self.model_path, "rb") as f:
-                self.model = pickle.load(f)
-            logger.info("Authenticity detector model loaded successfully.")
+            try:
+                with open(self.model_path, "rb") as f:
+                    self.model = pickle.load(f)
+                logger.info("Authenticity detector model loaded successfully.")
+            except Exception as e:
+                logger.warning(f"Failed to load authenticity model: {e}. Running with cold-start heuristics.")
+                self.model = None
         else:
             logger.warning(f"No trained model found at {self.model_path}. Running with cold-start heuristics.")
 

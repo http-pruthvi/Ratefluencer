@@ -67,9 +67,13 @@ class RatefluencerScorer:
     def load(self):
         """Loads the pre-trained performance model."""
         if os.path.exists(self.model_path):
-            with open(self.model_path, "rb") as f:
-                self.model = pickle.load(f)
-            logger.info("Ratefluencer Scorer model loaded successfully.")
+            try:
+                with open(self.model_path, "rb") as f:
+                    self.model = pickle.load(f)
+                logger.info("Ratefluencer Scorer model loaded successfully.")
+            except Exception as e:
+                logger.warning(f"Failed to load model from {self.model_path}: {e}. Running with fallback heuristic scoring.")
+                self.model = None
         else:
             logger.warning(f"No trained model found at {self.model_path}. Running with fallback heuristic scoring.")
 

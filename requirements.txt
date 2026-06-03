@@ -1,21 +1,22 @@
+# ─── Vercel Serverless Requirements (Lightweight) ───
+# Heavy ML packages excluded — the app uses built-in fallbacks:
+#   sentence-transformers → TF-IDF fallback (FORCE_TFIDF_FALLBACK=true)
+#   prophet → Linear regression fallback
+#   xgboost → sklearn GradientBoostingClassifier fallback
+#   faiss-cpu → Not needed with TF-IDF mode
+#   streamlit/plotly → Frontend only, not needed for API
+#   langgraph → Sequential runner fallback
+#
+# For local dev with full ML, use: pip install -r requirements-full.txt
+
 fastapi
 uvicorn
 pydantic>=2.0
-streamlit
 scikit-learn
-xgboost
-prophet
-sentence-transformers
-faiss-cpu
-praw
-feedparser
 sqlalchemy
-psycopg2-binary
-redis
-plotly
-langgraph
-anthropic
 python-dotenv
 pandas
 numpy
 requests
+feedparser
+anthropic

@@ -16,6 +16,10 @@ ratefluencer.db-journal
 # Streamlit config
 .streamlit/
 
+# Generated files
+*.pptx
+generate_ppt.py
+
 # OS-specific
 .DS_Store
 Thumbs.db

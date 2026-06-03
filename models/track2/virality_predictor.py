@@ -5,7 +5,7 @@ import random
 import numpy as np
 import pandas as pd
 from sklearn.ensemble import RandomForestRegressor
-from typing import Dict, Any, List
+from typing import Dict, Any, List, Tuple
 
 logger = logging.getLogger("ratefluencer.virality")
 
@@ -84,10 +84,13 @@ class ViralityPredictor:
         self.model = RandomForestRegressor(n_estimators=100, random_state=42)
         self.model.fit(X, y)
         
-        os.makedirs(os.path.dirname(self.model_path), exist_ok=True)
-        with open(self.model_path, "wb") as f:
-            pickle.dump(self.model, f)
-        logger.info(f"Virality Predictor model saved successfully to {self.model_path}")
+        try:
+            os.makedirs(os.path.dirname(self.model_path), exist_ok=True)
+            with open(self.model_path, "wb") as f:
+                pickle.dump(self.model, f)
+            logger.info(f"Virality Predictor model saved successfully to {self.model_path}")
+        except Exception as e:
+            logger.warning(f"Could not save virality model to disk: {e}. Model is active in memory only.")
 
     def predict(self, script_text: str, trend_score: float, category: str, hashtags: List[str] = None, posting_hour: int = 18) -> Dict[str, Any]:
         """Predicts views, likes, shares, and overall 0-100 virality rating for a generated script."""

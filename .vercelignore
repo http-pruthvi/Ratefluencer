@@ -1,0 +1,38 @@
+# Python caches
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual environments
+.venv/
+venv/
+
+# Local databases
+ratefluencer.db
+ratefluencer.db-journal
+
+# Saved ML model weights (not needed on Vercel — fallbacks are active)
+models/saved/*.pkl
+
+# Frontend (Streamlit) — not deployed to Vercel serverless
+frontend/
+.streamlit/
+
+# Data files
+data/
+
+# Docs and scripts
+docs/
+tests/
+generate_ppt.py
+*.pptx
+
+# Docker
+docker-compose.yml
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
